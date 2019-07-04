@@ -1,0 +1,58 @@
+using System;
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string lineinput = Console.ReadLine();
+            int lang = lineinput.Length - 1;
+            string erg = "";
+            int zahl = Convert.ToInt32(Console.ReadLine());
+            int ncode = 0;
+            
+            for (int x = 0; x <= lang; x++)
+            {
+                string letter = lineinput.Substring(x, 1);
+                int code = (int)Convert.ToChar(letter);
+                if (code > 47 && code < 58 || code > 64 && code <91 || code > 96 && code < 123)
+                {
+                    if (code > 47 && code < 58)
+                    {
+                        ncode = code + zahl;
+                        if (ncode > 57)
+                        {
+                            ncode = ncode - 10;
+                        }
+                    erg += Convert.ToChar(ncode);
+                    }
+                    
+                    if (code > 64 && code < 91)
+                    {
+                        ncode = code + zahl;
+                        if (ncode > 90)
+                        {
+                            ncode = ncode - 26;
+                        }
+                    erg += Convert.ToChar(ncode);
+                    }
+                    
+                    if (code > 96 && code < 123)
+                    {
+                        ncode = code + zahl;
+                        if (ncode > 122)
+                        {
+                            ncode = ncode - 25;
+                        }
+                    erg += Convert.ToChar(ncode);
+                    }
+                }
+                else
+                {
+                erg += letter;
+                }
+            }
+            Console.WriteLine(erg);
+        }
+    }
+}
